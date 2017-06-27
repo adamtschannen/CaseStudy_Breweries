@@ -7,6 +7,7 @@ beer<- read.csv(file="~/Downloads/Beers_CaseStudy1.csv")
 #count number of breweries in each state
 #plot for visualization 
 BrewPerState <- table(brew$State)
+sort(BrewPerState)
 plot(BrewPerState,ylab = "number of breweries", ylim=c(0,50))
 
 #part 2
@@ -15,7 +16,8 @@ plot(BrewPerState,ylab = "number of breweries", ylim=c(0,50))
 # set
 names(brew)[1]<-"Brewery_id"    #option 1
 names(brew) <- c("Brewery_id")  #option 2 
-
+names(brewbeer)[3]<-"City"
+names(brewbeer)[4]<-"State"
 #part 2a
 #joining the two data sets
 #need library plyr for this code
@@ -32,9 +34,13 @@ sapply(brewbeer, function(x) sum(is.na(x)))
 
 #part 4 -Compute the median alcohol content and international
 #bitterness unit for each state. Plot a bar chart to compare.
+library(doBy)
+MedABVperState<-summaryBy(ABV ~ State, data = brewbeer, FUN = median, na.rm = TRUE)
+MedIBUperState<-summaryBy(IBU ~ State, data = brewbeer, FUN = median, na.rm = TRUE)
 
-MedianABVperState<-ggplot(brewbeer, aes(x=factor(State), y=ABV)) + stat_summary(fun.y="median", geom="bar", rm.na=TRUE)
-MedianIBUPerState<-ggplot(brewbeer, aes(x=factor(State), y=IBU)) + stat_summary(fun.y="median", geom="bar", rm.na=TRUE)
+
+MedABVperStatePlot<-ggplot(brewbeer, aes(x=factor(State), y=ABV)) + stat_summary(fun.y="median", geom="bar", na.rm = TRUE)
+MedIBUperStatePlot<-ggplot(brewbeer, aes(x=factor(State), y=IBU)) + stat_summary(fun.y="median", geom="bar", na.rm =TRUE)
 
 #part 5 -Which state has the maximum alcoholic beer? Which state has the most bitter beer?
 
@@ -55,9 +61,9 @@ summary(brewbeer$ABV)
 #plots alcoholic content vs bitterness
 plot<-plot(brewbeer$ABV, brewbeer$IBU,xlab = "Alcohol Content", ylab = "bitterness of the beer",abline(lm(brewbeer$IBU ~brewbeer$ABV), col="red"))
 #finds the correlation between acloholic content and bitterness of beer
-cor(brewbeer$ABV, brewbeer$IBU,use = "pairwise.complete.obs", method = "pearson")
+alcbitcor<-cor(brewbeer$ABV, brewbeer$IBU,use = "pairwise.complete.obs", method = "pearson")
 
-
+alcVSbit<-ggplot(data=brewbeer, aes(x=brewbeer$ABV, y=brewbeer$IBU)) + geom_point(shape=1) + geom_smooth(method=lm) + ggtitle("Bitterness of Beer and Alcohol Content Reationship")+labs(x="Alcoholic Content", y="bitterness of Beer") + xlim(0,.15)+ylim(0,150)
 
 
 
