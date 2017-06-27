@@ -37,18 +37,39 @@ MedianABVperState<-ggplot(brewbeer, aes(x=factor(State), y=ABV)) + stat_summary(
 MedianIBUPerState<-ggplot(brewbeer, aes(x=factor(State), y=IBU)) + stat_summary(fun.y="median", geom="bar", rm.na=TRUE)
 
 #part 5 -Which state has the maximum alcoholic beer? Which state has the most bitter beer?
-alcmax<-max(brewbeer$ABV, na.rm = TRUE) #na.rm=TRUE removes na values 
+
+#the code finds the max value in a column and then pulls the whole row
+StateWMaxABV<-brewbeer[which.max(brewbeer$ABV),] 
+StateWMaxIBU<-brewbeer[which.max(brewbeer$IBU),]
+
+
+alcmax<-max(brewbeer[,"ABV"], na.rm = TRUE) #na.rm=TRUE removes na values 
 IBUmax<-max(brewbeer$IBU, na.rm = TRUE)
 
+#part 6- Summary statistics for ABV (Alcohol by volume) variable
+summary(brewbeer$ABV)
 
-maxalc<-sort(StateMaxABV$x , decreasing = FALSE, is.na(StateMaxABV$x))
-tail(maxalc)
-maxalc2<-sort(StateMaxABV$Group.1 , decreasing = FALSE)
+#part 7- Is there a relationship between the bitterness of the beer
+#and its alcoholic content? Draw a scatter plot.
+
+#plots alcoholic content vs bitterness
+plot<-plot(brewbeer$ABV, brewbeer$IBU,xlab = "Alcohol Content", ylab = "bitterness of the beer",abline(lm(brewbeer$IBU ~brewbeer$ABV), col="red"))
+#finds the correlation between acloholic content and bitterness of beer
+cor(brewbeer$ABV, brewbeer$IBU,use = "pairwise.complete.obs", method = "pearson")
 
 
-StateMaxABV<-aggregate(brewbeer$ABV, by = list(brewbeer$State), max, is.na(brewbeer$x))
 
-StateMaxABV1 <- StateMaxABV[,order('State')] 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
