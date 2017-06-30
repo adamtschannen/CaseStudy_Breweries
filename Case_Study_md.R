@@ -1,11 +1,11 @@
 ---
-  title: "Introduction"
-author: "adam tschannen"
+  title: "Breweries and Beer Case Study"
+author: "Adam Tschannen"
 date: "6/29/2017"
 output: html_document
 ---
   
-  With the data sets of Beers and Breweries we analyized and found the number of breweries in each state, the median alcohol content and international bitterness unit for each state, which state has the maximum alcoholic beer, which state has the most bitter beer, a summary of the Alcohol by volume and the relationship between the bitterness of the beer and its alcoholic content? 
+With the data sets of Beers and Breweries we analyized and found the number of breweries in each state, the median alcohol content and international bitterness unit for each state, which state has the maximum alcoholic beer, which state has the most bitter beer, a summary of the Alcohol by volume and the relationship between the bitterness of the beer and its alcoholic content? 
 ```{r}
 # read in csv files 
 brew<- read.csv(file="~/Downloads/Breweries_CaseStudy1.csv")
@@ -96,16 +96,4 @@ plot<-plot(brewbeer$ABV, brewbeer$IBU,xlab = "Alcohol Content", ylab = "bitterne
 alcbitcor<-cor(brewbeer$ABV, brewbeer$IBU,use = "pairwise.complete.obs", method = "pearson")
 
 ```
-Conclusion:
 
-in conclusion we found that Colorado was the state with the most breweriers with
-47 and DC, North Dokato, South Dakota and West Virginia were tied for the the 
-state with the least amount of breweries. We found that the range of median 
-alcohol by volume is between 4% and 6.25% while the range of median International
-Bitterness Unit is between 19 and 61. The state with the max alcohol by volume 
-is Colorado with 12.8% while the state with the max International Bitternes Unit
-was Oregon with 138. We also found a summary of the alcohol by volume and that 
-the min was %.1 the first quartile was  %.5000 the median is %5.6 the mean is  
-%5.98 the thrid quartile %6.7 and the max is  %12.8. Furthmore we found that 
-there is a realitively strong correation between alcohol by voulme and the 
-bitterness of beer of %67.
