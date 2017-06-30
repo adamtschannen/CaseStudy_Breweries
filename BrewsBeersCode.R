@@ -18,6 +18,7 @@ names(brew)[1]<-"Brewery_id"    #option 1
 names(brew) <- c("Brewery_id")  #option 2 
 names(brewbeer)[3]<-"City"
 names(brewbeer)[4]<-"State"
+names(brewbeer)[2]<-"Brewering_Company"
 #part 2a
 #joining the two data sets
 #need library plyr for this code
