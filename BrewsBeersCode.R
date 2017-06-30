@@ -5,7 +5,7 @@ beer<- read.csv(file="~/Downloads/Beers_CaseStudy1.csv")
 
 #part1
 #count number of breweries in each state
-#plot for visualization 
+#i ploted jsut for visualization 
 BrewPerState <- table(brew$State)
 sort(BrewPerState)
 plot(BrewPerState,ylab = "number of breweries", ylim=c(0,50))
@@ -15,15 +15,17 @@ plot(BrewPerState,ylab = "number of breweries", ylim=c(0,50))
 # to match the column name Brewery_id in the Beers_CaseStudy1 data
 # set
 names(brew)[1]<-"Brewery_id"    #option 1
-names(brew) <- c("Brewery_id")  #option 2 
-names(brewbeer)[3]<-"City"
-names(brewbeer)[4]<-"State"
-names(brewbeer)[2]<-"Brewering_Company"
+
 #part 2a
 #joining the two data sets
 #need library plyr for this code
 library(plyr)
 brewbeer <- join(x=brew, y=beer, by= 'Brewery_id')
+
+str(brewbeer)
+names(brewbeer)[3]<-"City"
+names(brewbeer)[4]<-"State"
+names(brewbeer)[2]<-"Brewering_Company"
 
 #part 2b
 #printing out first and last 6 obs in the new merged data set
@@ -39,7 +41,7 @@ library(doBy)
 MedABVperState<-summaryBy(ABV ~ State, data = brewbeer, FUN = median, na.rm = TRUE)
 MedIBUperState<-summaryBy(IBU ~ State, data = brewbeer, FUN = median, na.rm = TRUE)
 
-
+library(ggplot2)
 MedABVperStatePlot<-ggplot(brewbeer, aes(x=factor(State), y=ABV)) + stat_summary(fun.y="median", geom="bar", na.rm = TRUE)
 MedIBUperStatePlot<-ggplot(brewbeer, aes(x=factor(State), y=IBU)) + stat_summary(fun.y="median", geom="bar", na.rm =TRUE)
 
@@ -49,9 +51,6 @@ MedIBUperStatePlot<-ggplot(brewbeer, aes(x=factor(State), y=IBU)) + stat_summary
 StateWMaxABV<-brewbeer[which.max(brewbeer$ABV),] 
 StateWMaxIBU<-brewbeer[which.max(brewbeer$IBU),]
 
-
-alcmax<-max(brewbeer[,"ABV"], na.rm = TRUE) #na.rm=TRUE removes na values 
-IBUmax<-max(brewbeer$IBU, na.rm = TRUE)
 
 #part 6- Summary statistics for ABV (Alcohol by volume) variable
 summary(brewbeer$ABV)
@@ -64,6 +63,8 @@ plot<-plot(brewbeer$ABV, brewbeer$IBU,xlab = "Alcohol Content", ylab = "bitterne
 #finds the correlation between acloholic content and bitterness of beer
 alcbitcor<-cor(brewbeer$ABV, brewbeer$IBU,use = "pairwise.complete.obs", method = "pearson")
 
+
+#check
 alcVSbit<-ggplot(data=brewbeer, aes(x=brewbeer$ABV, y=brewbeer$IBU)) + geom_point(shape=1) + geom_smooth(method=lm) + ggtitle("Bitterness of Beer and Alcohol Content Reationship")+labs(x="Alcoholic Content", y="bitterness of Beer") + xlim(0,.15)+ylim(0,150)
 
 
