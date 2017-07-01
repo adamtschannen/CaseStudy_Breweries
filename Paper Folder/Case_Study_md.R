@@ -37,8 +37,8 @@ ID LA  NE  RI  OK  AK  GA  MD  CT  ME  MO  MT  VT  AZ  MN  FL  OH  NY  VA  IL  N
 WI IN  MA  WA  PA  TX  OR  MI  CA  CO 
 20 22  23  23  25  28  29  32  39  47
 
-Next, we merged the beer data with breweries data by brewery id. We did this so we would have all of our data on one sheet.
-To check that we executed this step correctly we printed first 6 observations and the last six observations to check the 
+Next, we merged the beer data with breweries data by 'Brewery_id'. We did this so we would have all of our data on one sheet.
+To check that we executed this step correctly we printed first six observations and the last six observations to check the 
 merged file.
 
 The first step in merging was making sure that both data sets had the same variable name 'Brewery_id' so that we could merge 
@@ -67,7 +67,7 @@ names(brewbeer)[4]<-"State"
 names(brewbeer)[2]<-"Brewering_Company"
 ```
 
-finally, we print out the first and last 6 observations to check the merged file.
+finally, we printed out the first and last 6 observations to check the merged file.
 ```{r}
 #part 2c
 #fing the top 6 and bottom six rows for the new data set brewbeer
@@ -105,7 +105,7 @@ MedABVperStatePlot<-ggplot(brewbeer, aes(x=factor(State), y=ABV)) + stat_summary
 MedIBUperStatePlot<-ggplot(brewbeer, aes(x=factor(State), y=IBU)) + stat_summary(fun.y="median", geom="bar", na.rm =TRUE)
 ```
 
-We found CO has the maximum alcoholic beer and OR  has the most bitter beer.
+We found Colorado has the maximum alcoholic beer and Oregon  has the most bitter beer.
 ```{r}
 #part 5
 #Find the State with the max ABV and IBU
