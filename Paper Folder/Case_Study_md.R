@@ -17,7 +17,7 @@ brew<- read.csv(file="~/Downloads/Breweries_CaseStudy1.csv")
 beer<- read.csv(file="~/Downloads/Beers_CaseStudy1.csv")
 ```
 
-Below we can see the number of breweries in each state in in ascending order with Colorado having the most number of breweries
+Below we can see the number of breweries in each state in ascending order with Colorado having the most number of breweries
 with 47 and DC, North Dakota, South Dakota and West Virginia having the least number of breweries with 1. 
 
 ```{r}
@@ -29,14 +29,6 @@ sort(BrewPerState)
 plot(BrewPerState,ylab = "number of breweries", ylim=c(0,50))
 ```
 
-DC  ND  SD  WV  AR  DE  MS  NV  AL  KS  NH  NJ  TN  HI  KY  NM  SC  UT  WY  IA  
-1   1   1   1   2   2   2   2   3   3   3   3   3   4   4   4   4   4   4   5   
-
-ID LA  NE  RI  OK  AK  GA  MD  CT  ME  MO  MT  VT  AZ  MN  FL  OH  NY  VA  IL  NC 
- 5  5   5   5   6   7   7   7   8   9   9   9  10  11  12  15  15  16  16  18  19   
-
-WI IN  MA  WA  PA  TX  OR  MI  CA  CO 
-20 22  23  23  25  28  29  32  39  47
 
 Next, we merged the beer data with breweries data by 'Brewery_id'. We did this so we would have all of our
 data on one sheet. To check that we executed this step correctly we printed the first six observations and 
