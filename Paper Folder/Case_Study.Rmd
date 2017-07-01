@@ -122,7 +122,7 @@ summary(brewbeer$ABV)
   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
 0.00100 0.05000 0.05600 0.05977 0.06700 0.12800
 
-To find the relationship between the bitterness of the beer and its alcoholic content we made a scatter plot and checked its correlation and we found there is .67 correlation with confidence intervals of .64 and .69 wich means the correlation is statistically significant. 
+To find the relationship between the bitterness of the beer and its alcoholic content we made a scatter plot and checked its correlation and we found there is .67 correlation with confidence intervals of .64 and .69 which means the correlation is statistically significant. 
 ```{r}
 #part 7
 #finding the relationship between ABV and IBU
