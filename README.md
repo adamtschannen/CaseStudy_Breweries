@@ -1,13 +1,10 @@
 # CaseStudy_Breweries
 
-File Organization:
+Folder Organization:
 
-file: Readme.md - Read for file organization 
+Data Folder- Contains the CSV files used for the analysis.
 
-file: Case_Study_md.R - Over view of case study including code and answers to questions.
+Paper Folder - Contains the Introduction to the case study, Clear answers to the questions with code and the conclusions to the case study.
 
-file: Case_Study.Rmd - Over view of case study including coda and answers to questions in readable format for GitHub.
+Analysis Folder- Contains the code that I used from my analysis. 
 
-file BrewBeerCode.R-  All of the code that I used for the case study.
-
-file: Conclusion- The conclusion and findings from the case study. 
