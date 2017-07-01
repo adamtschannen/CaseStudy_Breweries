@@ -83,7 +83,9 @@ Next, we found the median alcohol content and international bitterness unit for 
 library(doBy)
 #finds the median ABV per state and the median IBU per state
 MedABVperState<-summaryBy(ABV ~ State, data = brewbeer, FUN = median, na.rm = TRUE)
+MedABVperState
 MedIBUperState<-summaryBy(IBU ~ State, data = brewbeer, FUN = median, na.rm = TRUE)
+MedIBUperState
 #finds the range of the medians above(this is more so for my conclusion) 
 range(MedABVperState$ABV.median)
 range(MedIBUperState$IBU.median,na.rm=TRUE)
@@ -133,7 +135,8 @@ alcbitcortest<-cor.test(brewbeer$ABV, brewbeer$IBU,use = "pairwise.complete.obs"
 alcbitcortest
 ```
  
-  In conclusion, we found that Colorado was the State with the most breweries with
+
+In conclusion, we found that Colorado was the State with the most breweries with
 47 and DC, North Dakota, South Dakota and West Virginia were tied for the 
 State with the least number of breweries. We found that the range of median 
 alcohol by volume is between 4% and 6.25% while the range of median International
