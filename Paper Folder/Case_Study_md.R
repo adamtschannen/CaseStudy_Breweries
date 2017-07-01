@@ -6,10 +6,10 @@ output: html_document
 ---
 
 
-With the data sets of Beers and Breweries we analyzed and found the number of breweries in each state, the median alcohol
-content and international bitterness unit for each state, which state has the maximum alcoholic beer, which state has the
-most bitter beer, a summary of the Alcohol by volume and the relationship between the bitterness of the beer and its alcoholic
-content.
+With the data sets of Beers and Breweries we analyzed and found the number of breweries in each state, the number of missing
+values in each column, the median alcohol content and international bitterness unit for each state, which state has the maximum 
+alcoholic beer, which state has the most bitter beer, a summary of the Alcohol by volume and the relationship between the 
+bitterness of the beer and its alcoholic content.
 
 ```{r}
 # read in csv files 
