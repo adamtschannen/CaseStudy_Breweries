@@ -39,18 +39,22 @@ sapply(brewbeer, function(x) sum(is.na(x)))
 #bitterness unit for each state. Plot a bar chart to compare.
 library(doBy)
 MedABVperState<-summaryBy(ABV ~ State, data = brewbeer, FUN = median, na.rm = TRUE)
+MedABVperState
 MedIBUperState<-summaryBy(IBU ~ State, data = brewbeer, FUN = median, na.rm = TRUE)
-
+MedIBUperState
+       
 library(ggplot2)
 MedABVperStatePlot<-ggplot(brewbeer, aes(x=factor(State), y=ABV)) + stat_summary(fun.y="median", geom="bar", na.rm = TRUE)
+MedABVperStatePlot
 MedIBUperStatePlot<-ggplot(brewbeer, aes(x=factor(State), y=IBU)) + stat_summary(fun.y="median", geom="bar", na.rm =TRUE)
-
+MedIBUperStatePlot
 #part 5 -Which state has the maximum alcoholic beer? Which state has the most bitter beer?
 
 #the code finds the max value in a column and then pulls the whole row
 StateWMaxABV<-brewbeer[which.max(brewbeer$ABV),] 
+StateWMaxABV
 StateWMaxIBU<-brewbeer[which.max(brewbeer$IBU),]
-
+StateWMaxIBU
 
 #part 6- Summary statistics for ABV (Alcohol by volume) variable
 summary(brewbeer$ABV)
@@ -62,22 +66,8 @@ summary(brewbeer$ABV)
 plot<-plot(brewbeer$ABV, brewbeer$IBU,xlab = "Alcohol Content", ylab = "bitterness of the beer",abline(lm(brewbeer$IBU ~brewbeer$ABV), col="red"))
 #finds the correlation between acloholic content and bitterness of beer
 alcbitcor<-cor(brewbeer$ABV, brewbeer$IBU,use = "pairwise.complete.obs", method = "pearson")
+alcbitcor
 
-
-#check
+#check plot of regression 
 alcVSbit<-ggplot(data=brewbeer, aes(x=brewbeer$ABV, y=brewbeer$IBU)) + geom_point(shape=1) + geom_smooth(method=lm) + ggtitle("Bitterness of Beer and Alcohol Content Reationship")+labs(x="Alcoholic Content", y="bitterness of Beer") + xlim(0,.15)+ylim(0,150)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+alcVSbit
