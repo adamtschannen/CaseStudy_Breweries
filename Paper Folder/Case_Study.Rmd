@@ -13,7 +13,7 @@ brew<- read.csv(file="~/Downloads/Breweries_CaseStudy1.csv")
 beer<- read.csv(file="~/Downloads/Beers_CaseStudy1.csv")
 ```
 
-Below we can see the number of breweries in each state in in ascending order with Colorado having the most number of breweries with 47 and DC, North Dakota, South Dakota and West Virginia having the least number of breweries with 1. 
+Below we can see the number of breweries in each state in ascending order with Colorado having the most number of breweries with 47 and DC, North Dakota, South Dakota and West Virginia having the least number of breweries with 1. 
 
 ```{r}
 #part1
